@@ -1,0 +1,68 @@
+
+/*-----------------------------------------------------------------------------------------------*/
+
+#main-nav {
+	/* height: 890px; */
+	/* height: 1000px; */
+	height: 100vw;
+	background-image: url('../../../../../storage/app/public/images/background-main.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+	box-shadow: 10px 0 10px 10px #b0bec5;
+	min-height: 400px;
+	max-height: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+#logo-nav {
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: center;
+	max-width: 800px;
+	height: 70%;
+	margin: 0 auto;
+}
+
+
+#logo-nav img{
+	width: 660px;
+}
+
+@media only screen and (max-width: 1400px) {
+	#logo-nav img {
+		min-width: 300px;
+	}
+}
+
+@media only screen and (max-width: 665px) {
+	#logo-nav {
+		height: 70vw;
+	}
+
+	#logo-nav img {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+/*-----------------------------------------------------------------------------------------------*/
+
+#booking-btn {
+	width:300px;
+}
+
+@media only screen and (max-width: 300px) {
+	#booking-btn {
+		width: 90vw;
+		min-width: 170px;
+	}
+}
+
+#booking-btn:hover {
+	background-color: #dce775;
+}
