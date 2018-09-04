@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Driada</title>
 		{{-- <link  rel="icon" type="image/png" sizes="16x16" href="https://s15.postimg.cc/j68tnwgy3/movie-clapper-open.png"> --}}
-		<link  rel="icon" type="image/png" sizes="16x16" href="driada1.jpeg">
+		<link  rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
 		<!-- Fonts -->
 		{{-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet"> --}}
 		{{-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}

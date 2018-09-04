@@ -1,33 +1,34 @@
 .page-footer {
-  padding-top: 0 !important;
+	padding-top: 0 !important;
+	box-shadow: 10px 0 10px 10px #b0bec5;
 }
 .creat-margin {
-  margin: 0 10px ;
+	margin: 0 10px ;
 }
 
 footer.page-footer {
-    margin-top: 20px;
-    background-color:  #424a60 !important;
+	margin-top: 50px;
+	background-color:  #424a60 !important;
 }
 
 footer.page-footer .footer-copyright {
-    min-height: 64px !important;
+	min-height: 64px !important;
 }
 
 .footer-text-position {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 .creatBy-flex {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 @media screen and (max-width: 479px) {
-  /* start of phone styles */
-  .creatBy-flex {
-    flex-direction: column;
-  }
-
+	/* start of phone styles */
+	.creatBy-flex {
+		flex-direction: column;
+	}
 }
+/* box-shadow: 10px 0 10px 10px #b0bec5; */

@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
-import { Card, CardTitle } from 'react-materialize';
+import { Card, CardTitle, Col } from 'react-materialize';
+import { Link } from 'react-router-dom';
 
 import './CardCatalog.css';
 
 class CardCatalog extends Component {
-	render() {
-		console.log("test");
-		return (
-			<div>
-				<div className="row">
-					<div className="col s12 m3">
-						<div className="card">
-							<div className="card-image">
-								<img src="#" />
-									<span className="card-title">Card Title</span>
-								</div>
-								<div className="card-content">
-									<p>I am a very simple card. I am good at containing small bits of information.
-										I am convenient because I require little markup to use effectively.</p>
-								</div>
-								<div className="card-action">
-									<a href="#">This is a link</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			);
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			photo_path: "./" + this.props.photoPath,
+			title: this.props.title,
+			link: this.props.link
 		}
 	}
 
-	export default CardCatalog;
+	render() {
+		return (
+			<Link className="card-link" to={this.state.link}>
+				<div className="catalog-card">
+					<img src={this.state.photo_path} className="card-img-src"/>
+					<div className="card-container">
+						<h6><b>{this.state.title}</b></h6>
+					</div>
+				</div>
+			</Link>
+		);
+	}
+}
+
+export default CardCatalog;

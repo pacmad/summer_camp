@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
+
+Route::get('get_catalog', 'Content\CatalogController@ConfirmViaEmail');
+
+Route::resources([
+	'catalog' => 'Content\CatalogController',
+	'events' => 'Content\EventController'
+]);
