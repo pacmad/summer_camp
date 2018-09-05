@@ -21,7 +21,7 @@ footer.page-footer .footer-copyright {
 }
 .creatBy-flex {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
 }
 

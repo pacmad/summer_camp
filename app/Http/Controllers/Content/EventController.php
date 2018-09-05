@@ -17,18 +17,21 @@ class EventController extends Controller
 	*/
 	public function index()
 	{
-		$photos = DB::table('event_photos')
+		$events = DB::table('event_photos')
 		->distinct()
 		->join('events', 'events.section', '=', 'event_photos.section')
-		->select('event_photos.*', DB::raw("(SELECT group_concat(events.activity) FROM events WHERE events.section = event_photos.section) AS sum"))
+		->select('event_photos.*', DB::raw("(SELECT group_concat(events.activity) FROM events WHERE events.section = event_photos.section) AS actions"))
 		->from('event_photos')
 		->get();
+		foreach ($events as $key => $event) {
+			$event->actions = explode(",", $event->actions);
+		}
 		// SELECT DISTINCT event_photos.*, (SELECT group_concat(events.activity) FROM events WHERE events.section = event_photos.section) AS sum FROM event_photos JOIN events ON events.section=event_photos.section
 
 		// ->join('event_photos', 'events.section', '=', "event_photos.section")
 		// ->select('events.section', 'events.activity', 'event_photos.photo_path')
 		// ->get();
-		return $photos;
+		return $events;
 	}
 
 	/**

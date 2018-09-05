@@ -17,7 +17,7 @@ export default class Application extends Component {
 					<div>
 						<Navbar />
 						<Route exact path="/" component={Catalog}/>
-						<Route exact path="/:number" component={Events}/>
+						<Route exact path="/events" component={Events}/>
 						<Foot />
 					</div>
 				</HashRouter>

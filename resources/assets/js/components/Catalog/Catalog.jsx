@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { GetData } from '../../functions/GetData';
 import CardCatalog from './CardCatalog/CardCatalog';
-
+import IndexInfo from '../IndexInfo/IndexInfo';
 import './Catalog.css';
 
 class Catalog extends Component {
@@ -29,7 +29,8 @@ class Catalog extends Component {
 			);
 		}
 		const cards = this.state.cards;
-		const allCards = cards.map((card, i) =>
+		const allCards = cards.map(
+			(card, i) =>
 			<CardCatalog
 				key={i}
 				photoPath={card.photo_path}
@@ -38,8 +39,13 @@ class Catalog extends Component {
 				/>
 		)
 		return (
-			<div id="catalog">
-				{allCards}
+			<div>
+				<div className="index-info-wrapper">
+					<IndexInfo />
+				</div>
+				<div id="catalog">
+					{allCards}
+				</div>
 			</div>
 		);
 	}

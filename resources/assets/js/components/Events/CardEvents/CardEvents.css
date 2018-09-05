@@ -1,0 +1,49 @@
+.card-panel {
+	width: 24%;
+	margin: 1.9rem 0 -1rem .5rem;
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+}
+
+@media only screen and (max-width: 1250px) {
+	.card-panel {
+		width: 32%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.card-panel {
+		width: 49%;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.card-panel {
+		width: 97%;
+	}
+}
+
+.event-img {
+	width: 100%;
+	min-width: 50px;
+	border-radius: 50%;
+}
+
+.event-img-container {
+	width: 25%;
+	height: 100%;
+	margin-right: 1rem;
+}
+
+.event-info-container {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	height: 100%;
+	margin-left: 1rem;
+}
+
+.event-container {
+	display: flex;
+	flex-direction: row;
+}
