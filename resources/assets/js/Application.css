@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	background-image: url("../images/Vec1.jpg");
 	background-repeat: no-repeat;
-	text-align: center;
+	background-size: cover;
 }
 
 .index-info-wrapper {

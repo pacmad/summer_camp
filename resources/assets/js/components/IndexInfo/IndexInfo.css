@@ -1,7 +1,7 @@
 .first-paragraph {
 	font-size: 35px;
 	font-family: 'Fira Sans', sans-serif;
-	color: #4fc3f7;
+	color: #81c784;
 
 	/* text-shadow:2px 2px 5px black; */
 }
@@ -9,7 +9,7 @@
 .second-paragraph {
 	padding: 25px 0 75px 0;
 	font-size: 70px;
-	color: #29b6f6;
+	color: #4caf50;
 }
 
 .third-paragraph {
@@ -20,9 +20,14 @@
 @media only screen and (max-width: 400px) {
 	.first-paragraph, .third-paragraph {
 		font-size: 20px;
+		padding: 15px;
 	}
 
 	.second-paragraph {
 		font-size: 55px;
 	}
+}
+
+.index-info {
+	text-align: center;
 }

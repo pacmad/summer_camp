@@ -19,5 +19,6 @@ Route::get('get_catalog', 'Content\CatalogController@ConfirmViaEmail');
 
 Route::resources([
 	'catalog' => 'Content\CatalogController',
-	'events' => 'Content\EventController'
+	'events' => 'Content\EventController',
+	'placement' => 'Content\PlacementController'
 ]);

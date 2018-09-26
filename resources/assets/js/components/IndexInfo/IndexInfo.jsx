@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
 
 import './IndexInfo.css';
 
@@ -7,18 +8,18 @@ class IndexInfo extends Component {
 	render() {
 		return (
 			<div>
-				<p className="first-paragraph">
+				<p className="first-paragraph index-info">
 					<em>
 						Шукаєта місце, де б Ваша дитина могла оздоровитися,
 						знайти нових друзів, отримати масу вражень, розширити свій кругозір,
 						та просто гарно провести канікули?
 					</em>
 				</p>
-				<div className="second-paragraph">
+				<div className="second-paragraph index-info">
 					Тоді Вам саме до нас!
 				</div>
 				<div className="third-paragraph-container">
-					<p className="third-paragraph">
+					<p className="third-paragraph index-info">
 						«Дріада» — це найкращий спосіб показати Вашим дітям чарівну природу Карпат,
 						навчити цінувати та любити її. З нами ваша дитина побуває на мальовничих вершинах та водоспадах,
 						відвідає цікаві екскурсії.
@@ -28,11 +29,10 @@ class IndexInfo extends Component {
 						вчаться працювати в команді, розвивають свою креативність, відкривають у собі нові таланти та здібності.
 					</p>
 				</div>
+
 			</div>
 		);
 	}
 }
 
 export default IndexInfo;
-
-// , буде дихати чистим карпатським повітрям

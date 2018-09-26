@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Route, HashRouter } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { green, red, purple } from '@material-ui/core/colors';
+// import { MuiThemeProvider as V0MuiThemeProvider} from 'material-ui';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import { Route, HashRouter } from 'react-router-dom';
 
 import './Application.css';
 
-import Foot from './components/Foot/Foot';
-import Navbar from './components/Navbar/Navbar';
-import Catalog from './components/Catalog/Catalog';
-import Events from './components/Events/Events';
+import IndexPage from './pages/IndexPage/IndexPage';
+
+const theme = createMuiTheme({
+	palette: {
+		primary: {
+			light: '#bef67a',
+			main: '#8bc34a',
+			dark: '#5a9216',
+			contrastText: '#fafafa',
+		},
+		secondary: {
+			light: '#ffd95b',
+			main: '#ffa726',
+			dark: '#c77800',
+			contrastText: '#fafafa',
+		},
+	},
+});
 
 export default class Application extends Component {
 	render() {
 		return (
-			<div>
-				<HashRouter>
-					<div>
-						<Navbar />
-						<Route exact path="/" component={Catalog}/>
-						<Route exact path="/events" component={Events}/>
-						<Foot />
-					</div>
-				</HashRouter>
-			</div>
+			<MuiThemeProvider theme={theme}>
+				<IndexPage />
+			</MuiThemeProvider>
 		);
 	}
 }
@@ -31,6 +42,7 @@ if (document.getElementById('root')) {
 }
 
 
-// <HashRouter>
-// 	<Route exact path="/" component={Navbar}/>
-// </HashRouter>
+// <Route exact path="/events" component={Events}/>
+// <Route exact path="/placement" component={Placement}/>
+// <Route exact path="/information" component={Information}/>
+// <Foot />

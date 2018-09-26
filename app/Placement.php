@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EventPhoto extends Model
+class Placement extends Model
 {
 	protected $fillable = [
-		"photo_path",
-		"section"
+		"title",
+		"description"
 	];
 }

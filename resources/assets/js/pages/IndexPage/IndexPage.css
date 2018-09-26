@@ -1,0 +1,7 @@
+#catalog {
+	margin-bottom: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	min-width: 300px;
+	border: 4px solid white;
+}

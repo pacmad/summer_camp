@@ -1,6 +1,42 @@
-#catalog {
-	/* margin-top: 25px; */
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+.catalog-card {
+	/* Add shadows to create the "card" effect */
+	width: 100%;
+	/* min-height: 615px; */
+	/* margin: 1.9rem 0 -1rem .5rem; */
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+	transition: 0.3s;
+	border-radius: 2px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.catalog-card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-container {
+	padding: 2px 16px;
+}
+
+.card-img-src {
+	width: 100%;
+}
+
+.card-link {
+	margin: 1.9rem 0 -1rem .5rem;
+	width: 24%;
+	color: black;
+}
+
+@media only screen and (max-width: 900px) {
+	.card-link {
+		width: 49%;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.card-link {
+		width: 97%;
+	}
 }

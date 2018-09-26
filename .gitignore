@@ -4,13 +4,10 @@
 /.idea
 /.vscode
 /.vagrant
-Homestead.json
-Homestead.yaml
-npm-debug.log
 yarn-error.log
 public/js/app.js
-public/profile_pictures/*.png
-public/profile_pictures/*.jpg
+public/images/*
 .DS_Store
 package-lock.json
 composer.lock
+.env

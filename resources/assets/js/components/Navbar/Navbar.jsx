@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'react-materialize';
+
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 // import { Link } from 'react-router-dom';
 import { Route, HashRouter, NavLink, Link } from 'react-router-dom';
 
@@ -8,32 +10,28 @@ import { Route, HashRouter, NavLink, Link } from 'react-router-dom';
 
 import './Navbar.css';
 
+const styles = theme => ({
+	button: {
+		width: "30%",
+		maxWidth: 400,
+		minWidth: 250
+	}
+});
+
 class Navbar extends Component {
 	render() {
+		const { classes } = this.props;
 		return (
 			<div id="nav-bar">
 				<div id="main-nav">
 					<div id="logo-nav"><img src="./images/logo.png" /></div>
-					<HashRouter>
-						<div>
-							<Route exact path="/" render={() => (
-									<Link to="/booking">
-										<Button waves='light' className="green lighten-2" id="booking-btn">Забронювати</Button>
-									</Link>
-								)}
-								/>
-							<Route path="/:number" render={() => (
-									<Link to="/">
-										<Button waves='light' className="green lighten-2" id="booking-btn">Повернутися на головну</Button>
-									</Link>
-								)}
-								/>
-						</div>
-					</HashRouter>
+					<Button variant="contained" color="primary" className={classes.button} >
+						Забронювати
+					</Button>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default Navbar;
+export default withStyles(styles)(Navbar);
