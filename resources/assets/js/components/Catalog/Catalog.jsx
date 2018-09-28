@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import { GetData } from '../../functions/GetData';
 
 import './Catalog.css';
 
@@ -86,7 +87,8 @@ const styles = theme => ({
 
 class Catalog extends Component {
 
-	constructor(props) {
+	constructor(props)
+	{
 		super(props);
 		this.state = {
 			photoPath: "./" + this.props.photoPath,
@@ -94,6 +96,11 @@ class Catalog extends Component {
 			link: this.props.link,
 			width: "100%"
 		}
+		this.navigateTo = this.navigateTo.bind(this);
+	}
+
+	navigateTo() {
+		location.replace("http://localhost:8100/program");
 	}
 
 	render() {
@@ -105,6 +112,7 @@ class Catalog extends Component {
 					focusRipple
 					className={classes.image}
 					focusVisibleClassName={classes.focusVisible}
+					onClick={this.navigateTo}
 					style={{
 						width: this.state.width
 					}}
@@ -112,7 +120,8 @@ class Catalog extends Component {
 					<span
 						className={classes.imageSrc}
 						style={{
-							backgroundImage: `url(${this.state.photoPath})`
+							backgroundImage: `url(${this.state.photoPath})`,
+							backgroundSize: "100%"
 						}}
 						/>
 					<span className={classes.imageBackdrop} />

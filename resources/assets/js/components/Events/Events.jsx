@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import { GetData } from '../../functions/GetData';
+import { withStyles } from '@material-ui/core/styles';
 
 import CardEvents from './CardEvents/CardEvents';
 
-import './Events.css';
+const styles = theme => ({
+	root: {
+		width: "100%",
+		display: "flex",
+		flexDirection: "row",
+		flexWrap: "wrap"
+	}
+});
 
 class Events extends Component {
 
@@ -26,6 +33,7 @@ class Events extends Component {
 	}
 
 	render() {
+		const { classes } = this.props;
 
 		if (this.state.ready === false) {
 			return (
@@ -44,11 +52,11 @@ class Events extends Component {
 				/>
 		)
 		return (
-			<div className="events-set">
+			<div className={classes.root}>
 				{allCards}
 			</div>
 		);
 	}
 }
 
-export default Events;
+export default withStyles(styles)(Events);

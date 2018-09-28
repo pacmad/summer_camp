@@ -4,11 +4,12 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { green, red, purple } from '@material-ui/core/colors';
 // import { MuiThemeProvider as V0MuiThemeProvider} from 'material-ui';
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
-// import { Route, HashRouter } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 
 import './Application.css';
 
 import IndexPage from './pages/IndexPage/IndexPage';
+import ProgramPage from './pages/ProgramPage/ProgramPage';
 
 const theme = createMuiTheme({
 	palette: {
@@ -31,7 +32,12 @@ export default class Application extends Component {
 	render() {
 		return (
 			<MuiThemeProvider theme={theme}>
-				<IndexPage />
+				<BrowserRouter>
+					<div>
+						<Route exact path="/" component={IndexPage} />
+						<Route exact path="/program" component={ProgramPage} />
+					</div>
+				</BrowserRouter>
 			</MuiThemeProvider>
 		);
 	}
