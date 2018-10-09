@@ -40,12 +40,14 @@ class IndexPage extends Component {
 		)
 		return (
 			<div>
-				<Navbar />
-				<div className="index-info-wrapper">
-					<IndexInfo />
-				</div>
-				<div id="catalog">
-					{allCards}
+				<Navbar link="/booking" linkText="Забронювати" />
+				<div id="main-body">
+					<div className="index-info-wrapper">
+						<IndexInfo />
+					</div>
+					<div id="catalog">
+						{allCards}
+					</div>
 				</div>
 			</div>
 		);

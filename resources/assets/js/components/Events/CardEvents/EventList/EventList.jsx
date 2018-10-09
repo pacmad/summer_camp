@@ -15,6 +15,7 @@ class EventList extends Component {
 			(action, i) =>
 			<li key={i}>{action}</li>
 		)
+		console.log(actionList);
 
 		return (
 			<ul className="black-text event-list">

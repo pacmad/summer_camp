@@ -8,8 +8,11 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 import './Application.css';
 
+import Navbar from './components/Navbar/Navbar';
 import IndexPage from './pages/IndexPage/IndexPage';
 import ProgramPage from './pages/ProgramPage/ProgramPage';
+import PlacementPage from './pages/PlacementPage/PlacementPage';
+import InformationPage from './pages/InformationPage/InformationPage';
 
 const theme = createMuiTheme({
 	palette: {
@@ -34,8 +37,12 @@ export default class Application extends Component {
 			<MuiThemeProvider theme={theme}>
 				<BrowserRouter>
 					<div>
-						<Route exact path="/" component={IndexPage} />
-						<Route exact path="/program" component={ProgramPage} />
+						<div>
+							<Route exact path="/" component={IndexPage} />
+							<Route exact path="/program" component={ProgramPage} />
+							<Route exact path="/placement" component={PlacementPage} />
+							<Route exact path="/information" component={InformationPage} />
+						</div>
 					</div>
 				</BrowserRouter>
 			</MuiThemeProvider>
@@ -46,9 +53,3 @@ export default class Application extends Component {
 if (document.getElementById('root')) {
 	ReactDOM.render(<Application />, document.getElementById('root'));
 }
-
-
-// <Route exact path="/events" component={Events}/>
-// <Route exact path="/placement" component={Placement}/>
-// <Route exact path="/information" component={Information}/>
-// <Foot />

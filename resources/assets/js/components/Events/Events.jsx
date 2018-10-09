@@ -9,6 +9,7 @@ const styles = theme => ({
 	root: {
 		width: "100%",
 		display: "flex",
+		justifyContent: "center",
 		flexDirection: "row",
 		flexWrap: "wrap"
 	}

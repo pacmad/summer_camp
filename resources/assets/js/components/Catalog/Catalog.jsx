@@ -96,11 +96,6 @@ class Catalog extends Component {
 			link: this.props.link,
 			width: "100%"
 		}
-		this.navigateTo = this.navigateTo.bind(this);
-	}
-
-	navigateTo() {
-		location.replace("http://localhost:8100/program");
 	}
 
 	render() {
@@ -108,11 +103,11 @@ class Catalog extends Component {
 
 		return (
 			<div className={classes.root}>
+				<Link to={this.props.link}>
 				<ButtonBase
 					focusRipple
 					className={classes.image}
 					focusVisibleClassName={classes.focusVisible}
-					onClick={this.navigateTo}
 					style={{
 						width: this.state.width
 					}}
@@ -121,7 +116,8 @@ class Catalog extends Component {
 						className={classes.imageSrc}
 						style={{
 							backgroundImage: `url(${this.state.photoPath})`,
-							backgroundSize: "100%"
+							backgroundSize: "cover",
+							backgroundRepeat: "no-repeat"
 						}}
 						/>
 					<span className={classes.imageBackdrop} />
@@ -137,19 +133,10 @@ class Catalog extends Component {
 						</Typography>
 					</span>
 				</ButtonBase>
+			</Link>
 			</div>
 		);
 	}
 }
 
 export default withStyles(styles)(Catalog);
-
-
-// <Link className="card-link" to={this.state.link}>
-// 	<div className="catalog-card">
-// 		<img src={this.state.photo_path} className="card-img-src"/>
-// 		<div className="card-container">
-// 			<h6><b>{this.state.title}</b></h6>
-// 		</div>
-// 	</div>
-// </Link>

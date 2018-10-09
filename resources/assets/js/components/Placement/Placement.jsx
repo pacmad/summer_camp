@@ -1,8 +1,41 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
 import { GetData } from '../../functions/GetData';
 
-import './Placement.css';
+const styles = theme => ({
+	placementContainer: {
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
+		textAlign: "center",
+		maxWidth: "1000px",
+		margin: "0 auto",
+		padding: "10px",
+		width: "92%"
+	},
+	placementInfoTitle: {
+		padding: "25px 0 40px 0",
+		fontSize: "70px",
+		color: "#81c784",
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "40px"
+		},
+	},
+	placementInfoDescription: {
+		textAlign: "justify",
+		fontSize: "30px",
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "20px"
+		},
+	},
+	placementMap: {
+		width: "100%",
+		height: "450px",
+		border: 0
+	}
+});
 
 class Placement extends Component {
 
@@ -15,8 +48,7 @@ class Placement extends Component {
 	}
 
 	componentWillMount() {
-		GetData('/placement').then((result) => {
-			// console.log(result);
+		GetData('/getPlacement').then((result) => {
 			this.setState({
 				placement: result,
 				ready: true
@@ -25,45 +57,31 @@ class Placement extends Component {
 	}
 
 	render() {
+		const { classes } = this.props;
 
 		if (this.state.ready === false) {
 			return (<div></div>);
 		}
 
 		const info = this.state.placement;
-		console.log(info);
 		const allBlocks = info.map(
 			(block, i) =>
-			<div key={i} className="placement-info-container">
-				<div className="placement-info-title">{block.title}</div>
-				<div className="placement-info-description">{block.description}</div>
+			<div key={i} className={classes.placementInfoContainer}>
+				<div className={classes.placementInfoTitle}>{block.title}</div>
+				<div className={classes.placementInfoDescription}>{block.description}</div>
 				<hr />
 			</div>
 		)
 
 		return (
-			<div className="placement-container">
+			<div className={classes.placementContainer}>
 				{allBlocks}
-				<iframe className="placement-map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2649.7562951240193!2d24.9092241!3d48.3844176!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4736dad7b0949c9d%3A0xd4f319b8b5606742!2sKolyba+%22Zolotyy+Korin%CA%B9%22!5e0!3m2!1sru!2sua!4v1536567451520"
-					frameBorder="0" allowFullScreen></iframe>
+				<iframe className={classes.placementMap} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1324.9113048011686!2d24.90496052053109!3d48.383143795729985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4736dad7af7c5a05%3A0x3a0b8f0f91e4146a!2z0JTRgNGW0LDQtNCwINC00LjRgtGP0YfQuNC5INGC0LDQsdGW0YA!5e0!3m2!1sru!2sua!4v1538710447956"
+					frameBorder="0"allowFullScreen></iframe>
 			</div>
 
 		);
 	}
 }
 
-export default Placement;
-
-
-// <div className="placement-location">
-//
-// </div>
-// <div className="placement-how-to-get">
-//
-// </div>
-// <div className="placement-accomodation-food">
-//
-// </div>
-// <div className="placement-additional-info">
-//
-// </div>
+export default withStyles(styles)(Placement);

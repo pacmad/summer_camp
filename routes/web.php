@@ -16,13 +16,23 @@ Route::get('/', function () {
 });
 
 Route::get('program', function () {
-	return view('program');
+	return view('welcome');
+});
+
+Route::get('placement', function () {
+	return view('welcome');
+});
+
+Route::get('information', function () {
+	return view('welcome');
 });
 
 Route::get('get_catalog', 'Content\CatalogController@ConfirmViaEmail');
 
+Route::get('getInformation', 'Content\InformationController@getAllInformation');
+
 Route::resources([
 	'catalog' => 'Content\CatalogController',
 	'events' => 'Content\EventController',
-	'placement' => 'Content\PlacementController'
+	'getPlacement' => 'Content\PlacementController',
 ]);

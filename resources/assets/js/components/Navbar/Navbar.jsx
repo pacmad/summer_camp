@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Route, HashRouter, NavLink, Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-// import { Link } from 'react-router-dom';
-import { Route, HashRouter, NavLink, Link } from 'react-router-dom';
-
-// import Foot from '../Foot/Foot';
 
 import './Navbar.css';
 
@@ -19,15 +16,22 @@ const styles = theme => ({
 });
 
 class Navbar extends Component {
+
+	constructor(props) {
+		super(props);
+	}
+	
 	render() {
 		const { classes } = this.props;
 		return (
 			<div id="nav-bar">
 				<div id="main-nav">
 					<div id="logo-nav"><img src="./images/logo.png" /></div>
-					<Button variant="contained" color="primary" className={classes.button} >
-						Забронювати
-					</Button>
+					<Link to={this.props.link}>
+						<Button variant="contained" color="primary" className={classes.button} >
+							{this.props.linkText}
+						</Button>
+					</Link>
 				</div>
 			</div>
 		);
