@@ -13,11 +13,19 @@ const styles = theme => ({
 	paragraphTitle: {
 		fontSize: "50px",
 		color: "#4caf50",
-		textAlign: "center"
+		textAlign: "center",
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "30px",
+		},
 	},
 	paragraphDescription: {
 		fontSize: "30px",
-		marginLeft: "10%"
+		marginLeft: "10%",
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "20px",
+			marginLeft: "0",
+			marginRight: ".5rem",
+		},
 	}
 });
 

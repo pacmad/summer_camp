@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddImgToEvents extends Migration
+class AddAgeColumn extends Migration
 {
 	/**
 	* Run the migrations.
@@ -13,8 +13,8 @@ class AddImgToEvents extends Migration
 	*/
 	public function up()
 	{
-		Schema::table('events', function (Blueprint $table) {
-			$table->string("photo_path");
+		Schema::table('tours', function (Blueprint $table) {
+			$table->string("age");
 		});
 	}
 
@@ -25,8 +25,8 @@ class AddImgToEvents extends Migration
 	*/
 	public function down()
 	{
-		Schema::table('events', function (Blueprint $table) {
-			$table->dropColumn("photo_path");
+		Schema::table('tours', function (Blueprint $table) {
+			$table->dropColumn("age");
 		});
 	}
 }

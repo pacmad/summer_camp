@@ -13,7 +13,6 @@ class InformationController extends Controller
 		$data = array();
 		$information = json_decode(DB::table('informations')->get(), true);
 		foreach ($information as $key => $record) {
-			// return $record;
 			$tableName = $record['table_name'];
 			$data[$key]['title'] = $record['table_title'];
 			$data[$key]['type'] = $record['table_type'];

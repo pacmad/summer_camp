@@ -39,7 +39,7 @@ class IndexPage extends Component {
 				/>
 		)
 		return (
-			<div>
+			<div id="child-root">
 				<Navbar link="/booking" linkText="Забронювати" />
 				<div id="main-body">
 					<div className="index-info-wrapper">

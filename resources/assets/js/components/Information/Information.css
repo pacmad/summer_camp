@@ -38,10 +38,12 @@
 @media only screen and (max-width: 500px) {
 	.first-paragraph {
 		font-size: 20px;
+		margin-right: .5rem;
 	}
 
 	.second-paragraph {
 		font-size: 55px;
+		margin-right: .5rem;
 	}
 
 	.paragraph-title {
@@ -50,9 +52,17 @@
 
 	.paragraph-description {
 		font-size: 20px;
+		margin-right: .5rem;
 	}
 
 	.paragraph {
 		margin-bottom: 20px;
+		margin-right: .5rem;
+	}
+
+	.important-paragraph {
+		font-size: 30px;
+		margin-right: .5rem;
+		margin-left: .5rem;
 	}
 }

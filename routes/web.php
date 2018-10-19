@@ -27,9 +27,15 @@ Route::get('information', function () {
 	return view('welcome');
 });
 
+Route::get('booking', function () {
+	return view('welcome');
+});
+
 Route::get('get_catalog', 'Content\CatalogController@ConfirmViaEmail');
 
 Route::get('getInformation', 'Content\InformationController@getAllInformation');
+
+Route::get('getTours', 'Content\TourController@getAllTours');
 
 Route::resources([
 	'catalog' => 'Content\CatalogController',

@@ -13,6 +13,7 @@ import IndexPage from './pages/IndexPage/IndexPage';
 import ProgramPage from './pages/ProgramPage/ProgramPage';
 import PlacementPage from './pages/PlacementPage/PlacementPage';
 import InformationPage from './pages/InformationPage/InformationPage';
+import BookingPage from './pages/BookingPage/BookingPage';
 
 const theme = createMuiTheme({
 	palette: {
@@ -36,12 +37,13 @@ export default class Application extends Component {
 		return (
 			<MuiThemeProvider theme={theme}>
 				<BrowserRouter>
-					<div>
-						<div>
+					<div id="app-root">
+						<div id="page-root">
 							<Route exact path="/" component={IndexPage} />
 							<Route exact path="/program" component={ProgramPage} />
 							<Route exact path="/placement" component={PlacementPage} />
 							<Route exact path="/information" component={InformationPage} />
+							<Route exact path="/booking" component={BookingPage} />
 						</div>
 					</div>
 				</BrowserRouter>
