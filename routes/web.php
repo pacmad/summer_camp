@@ -37,6 +37,8 @@ Route::get('getInformation', 'Content\InformationController@getAllInformation');
 
 Route::get('getTours', 'Content\TourController@getAllTours');
 
+Route::post('bookTour', 'Content\TourController@bookTour');
+
 Route::resources([
 	'catalog' => 'Content\CatalogController',
 	'events' => 'Content\EventController',

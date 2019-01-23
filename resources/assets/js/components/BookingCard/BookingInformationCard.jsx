@@ -55,7 +55,7 @@ class BookingInformationCard extends Component {
 						component="img"
 						alt="Contemplative Reptile"
 						className={classes.media}
-						height="240"
+						height="480"
 						image={data.photo}
 						title="Contemplative Reptile"
 						/>

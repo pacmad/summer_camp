@@ -6,20 +6,50 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { PostData } from '../../functions/PostData';
 
 class BookingForm extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			firstName: '',
+			lastName: '',
+			fatherName: '',
+			birthDate: '',
+			address: '',
+			parentInfo: '',
+			tourId: ''
+		};
 		this.handleClose = this.handleClose.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 	}
 
 	// handleClickOpen() {
 	// this.setState({ open: true });
 	// };
 
+    componentWillMount() {
+        this.setState({tourId: this.props.tourId});
+    }
+
 	handleClose() {
 		this.props.callback(false);
 	};
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+        console.log('Event: ', event.target.name);
+    };
+
+    handleSubmit() {
+    	// console.log('State: ', this.state);
+        PostData('bookTour', this.state)
+            .then((result) => {
+                console.log(result);
+            });
+        // this.props.callback(false);
+    };
 
 	render() {
 		return (
@@ -42,6 +72,8 @@ class BookingForm extends Component {
 							label="Ім'я"
 							type="text"
 							fullWidth
+							onChange={this.handleChange}
+							name="firstName"
 							/>
 						<TextField
 							margin="dense"
@@ -49,6 +81,8 @@ class BookingForm extends Component {
 							label="Прізвище"
 							type="text"
 							fullWidth
+                            onChange={this.handleChange}
+                            name="lastName"
 							/>
 						<TextField
 							margin="dense"
@@ -56,6 +90,8 @@ class BookingForm extends Component {
 							label="По-батькові"
 							type="text"
 							fullWidth
+                            onChange={this.handleChange}
+                            name="fatherName"
 							/>
 						<TextField
 							margin="dense"
@@ -63,16 +99,20 @@ class BookingForm extends Component {
 							label="Дата народження"
 							type="date"
 							fullWidth
+                            onChange={this.handleChange}
+                            name="birthDate"
 							InputLabelProps={{
 								shrink: true,
 							}}
 							/>
 						<TextField
 							margin="dense"
-							id="adress"
+							id="address"
 							label="Домашня адреса"
 							type="text"
 							fullWidth
+                            onChange={this.handleChange}
+                            name="address"
 							/>
 						<TextField
 							id="parentsInfo"
@@ -81,13 +121,16 @@ class BookingForm extends Component {
 							multiline
 							rowsMax="10"
 							margin="dense"
+                            onChange={this.handleChange}
+                            name="parentsInfo"
+							required={true}
 						/>
 					</DialogContent>
 					<DialogActions>
 						<Button onClick={this.handleClose} color="secondary">
 							Закрити
 						</Button>
-						<Button onClick={this.handleClose} color="primary">
+						<Button onClick={this.handleSubmit} color="primary">
 							Забронювати
 						</Button>
 					</DialogActions>

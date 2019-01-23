@@ -8,7 +8,7 @@
 		<title>Дріада</title>
 		<link  rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-		<link rel="stylesheet" href="http://localhost:8100/css/main.css">
+		<link rel="stylesheet" href="http://localhost/css/main.css">
 	</head>
 	<body>
 		<div id="root"></div>
