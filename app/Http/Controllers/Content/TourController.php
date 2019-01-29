@@ -18,6 +18,7 @@ class TourController extends Controller
 	public function bookTour(Request $request)
     {
 
+//        return $request;
         $id = DB::table('bookings')->insertGetId([
             'firstName'     => $request['firstName'],
             'lastName'      => $request['lastName'],
