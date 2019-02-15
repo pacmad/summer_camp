@@ -25,7 +25,7 @@ class BookingForm extends Component {
 			fatherName: '',
 			birthDate: '',
 			address: '',
-			parentInfo: '',
+			parentsInfo: '',
 			tourId: '',
 			size: 'm',
 			gender: 'male',
@@ -33,6 +33,12 @@ class BookingForm extends Component {
             transferBack: 'kiev',
 			needTransferFirst: true,
             needTransferBack: true,
+			errors: {
+                firstName: false,
+                lastName: false,
+                birthDate: false,
+                parentsInfo: false
+			}
 		};
 		this.handleClose = this.handleClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -63,16 +69,45 @@ class BookingForm extends Component {
 	}
 
     handleSubmit() {
+    	let errors = {
+            firstName: false,
+            lastName: false,
+            birthDate: false,
+            parentsInfo: false
+		};
+    	if (!this.state.firstName) {
+            errors.firstName = true;
+		}
+        if (!this.state.lastName) {
+            errors.lastName = true;
+        }
+        if (!this.state.birthDate) {
+            errors.birthDate = true;
+        }
+        if (!this.state.parentsInfo) {
+            errors.parentsInfo = true;
+        }
+        this.setState({errors: errors});
+
+        console.log('ERRORS: ', this.state.errors);
+        for(let index in errors) {
+            if (errors[index] === true) {
+            	document.getElementById('dialog-scrollable').scrollTop = 0;
+                // window.scrollTop(0);
+            	return;
+			}
+        }
+
     	if (!this.state.needTransferFirst) {
-            this.state.transferFirst = '';
+            this.setState({transferFirst: null});
 		}
 
         if (!this.state.needTransferBack) {
-            this.state.transferBack = '';
+            this.setState({transferBack: null});
         }
 
-		delete this.state.needTransferFirst;
-        delete this.state.needTransferBack;
+		// delete this.state.needTransferFirst;
+        // delete this.state.needTransferBack;
         PostData('bookTour', this.state)
             .then((result) => {
                 console.log(result);
@@ -82,46 +117,20 @@ class BookingForm extends Component {
 	render() {
 
 		const needTransferFirst = this.state.needTransferFirst;
-		let transferFirst;
+		let showTransferFirst;
 		if (needTransferFirst) {
-			transferFirst = <FormControl component="fieldset" style={{marginTop: '16px'}}>
-                					<FormLabel component="legend">Трансфер на базу з: </FormLabel>
-									<RadioGroup
-										style={{flexDirection: 'row'}}
-										aria-label="transferFirst"
-										name="transferFirst"
-										value={this.state.transferFirst}
-										onChange={this.handleChange}
-										color={"primary"}
-									>
-										<FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
-										<FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
-									</RadioGroup>
-								</FormControl>
+			showTransferFirst = true
 		} else {
-            transferFirst = null;
+            showTransferFirst = false;
 		}
 
 
         const needTransferBack = this.state.needTransferBack;
-        let transferBack;
+        let showTransferBack;
         if (needTransferBack) {
-            transferBack = <FormControl component="fieldset" style={{marginTop: '16px'}}>
-                <FormLabel component="legend">Трансфер назад до: </FormLabel>
-                <RadioGroup
-                    style={{flexDirection: 'row'}}
-                    aria-label="transferBack"
-                    name="transferBack"
-                    value={this.state.transferBack}
-                    onChange={this.handleChange}
-                    color={"primary"}
-                >
-                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
-                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
-                </RadioGroup>
-            </FormControl>
+            showTransferBack = true;
         } else {
-            transferBack = null;
+            showTransferBack = false;
         }
 
 		return (
@@ -132,12 +141,10 @@ class BookingForm extends Component {
 					aria-labelledby="form-dialog-title"
 					>
 					<DialogTitle id="form-dialog-title">Анкета</DialogTitle>
-					<DialogContent>
-						<DialogContentText>
-							To subscribe to this website, please enter your email address here. We will send
-							updates occasionally.
-						</DialogContentText>
+					<DialogContent id={'dialog-scrollable'}>
 						<TextField
+							required={true}
+							error={this.state.errors.firstName}
 							autoFocus
 							margin="dense"
 							id="firstName"
@@ -155,6 +162,8 @@ class BookingForm extends Component {
 							fullWidth
                             onChange={this.handleChange}
                             name="lastName"
+                            required={true}
+                            error={this.state.errors.lastName}
 							/>
 						<TextField
 							margin="dense"
@@ -176,6 +185,8 @@ class BookingForm extends Component {
 							InputLabelProps={{
 								shrink: true,
 							}}
+                            required={true}
+                            error={this.state.errors.birthDate}
 							/>
 						<TextField
 							margin="dense"
@@ -196,6 +207,7 @@ class BookingForm extends Component {
                             onChange={this.handleChange}
                             name="parentsInfo"
 							required={true}
+                            error={this.state.errors.parentsInfo}
 						/>
                         <FormControl component="fieldset" style={{marginTop: '16px'}}>
                             <FormLabel component="legend">Розмір верхнього одягу (футболка)</FormLabel>
@@ -232,7 +244,10 @@ class BookingForm extends Component {
 						</FormControl>
 
 						<hr/>
-
+                        <DialogContentText color={'error'}>
+                            Дитина, яку перевозимо ми, повинна мати з собою
+                            оригінал свідоцтва про народження.
+                        </DialogContentText>
                         <FormGroup column={"true"} style={{marginTop: '24px'}}>
                             <FormControlLabel
                                 control={
@@ -246,7 +261,20 @@ class BookingForm extends Component {
                                 }
                                 label="Трансфер туди"
                             />
-							{transferFirst}
+                            <FormControl component="fieldset" style={{marginTop: '16px', display: showTransferFirst ? 'flex' : 'none'}}>
+                                <FormLabel component="legend">Трансфер на базу з: </FormLabel>
+                                <RadioGroup
+                                    style={{flexDirection: 'row'}}
+                                    aria-label="transferFirst"
+                                    name="transferFirst"
+                                    value={this.state.transferFirst}
+                                    onChange={this.handleChange}
+                                    color={"primary"}
+                                >
+                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
+                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
+                                </RadioGroup>
+                            </FormControl>
 						</FormGroup>
 
                         <FormGroup column={"true"} style={{marginTop: '24px'}}>
@@ -262,7 +290,20 @@ class BookingForm extends Component {
                                 }
                                 label="Трансфер назад"
                             />
-							{transferBack}
+                            <FormControl component="fieldset" style={{marginTop: '16px', display: showTransferBack ? 'flex' : 'none'}}>
+                                <FormLabel component="legend">Трансфер назад до: </FormLabel>
+                                <RadioGroup
+                                    style={{flexDirection: 'row'}}
+                                    aria-label="transferBack"
+                                    name="transferBack"
+                                    value={this.state.transferBack}
+                                    onChange={this.handleChange}
+                                    color={"primary"}
+                                >
+                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
+                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
+                                </RadioGroup>
+                            </FormControl>
                         </FormGroup>
 
 					</DialogContent>
