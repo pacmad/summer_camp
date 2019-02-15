@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { GetData } from '../../functions/GetData';
 import Events from '../../components/Events/Events';
 import Navbar from '../../components/Navbar/Navbar';
+import ProgramText from "./ProgramText";
+import Foot from "../../components/Foot/Foot";
 
 const styles = theme => ({
 	root: {
@@ -39,8 +41,10 @@ class ProgramPage extends Component {
 				<Navbar link="/" linkText="На головну" />
 				<div id="main-body">
 					<div className={classes.root}>
+						<ProgramText/>
 						<Events />
 					</div>
+                    <Foot/>
 				</div>
 			</div>
 		);

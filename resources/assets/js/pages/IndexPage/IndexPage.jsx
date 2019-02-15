@@ -5,6 +5,7 @@ import Catalog from '../../components/Catalog/Catalog';
 import IndexInfo from '../../components/IndexInfo/IndexInfo';
 import Navbar from '../../components/Navbar/Navbar';
 import './IndexPage.css';
+import Foot from "../../components/Foot/Foot";
 
 class IndexPage extends Component {
 
@@ -48,6 +49,7 @@ class IndexPage extends Component {
 					<div id="catalog">
 						{allCards}
 					</div>
+                    <Foot/>
 				</div>
 			</div>
 		);

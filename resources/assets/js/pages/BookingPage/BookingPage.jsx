@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { GetData } from '../../functions/GetData';
 import Navbar from '../../components/Navbar/Navbar';
 import BookingCard from '../../components/BookingCard/BookingCard';
+import Foot from "../../components/Foot/Foot";
 
 class BookingPage extends Component {
 
@@ -37,6 +38,7 @@ class BookingPage extends Component {
 				<Navbar link="/" linkText="На головну" />
 				<div id="main-body">
 					{list}
+                    <Foot/>
 				</div>
 			</div>
 		);

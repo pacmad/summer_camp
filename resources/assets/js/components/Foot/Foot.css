@@ -7,7 +7,8 @@
 }
 
 footer.page-footer {
-	margin-top: 50px;
+	margin-top: 32px;
+	height: 150px;
 	background-color:  #424a60 !important;
 }
 

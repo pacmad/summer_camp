@@ -10,19 +10,17 @@ import './Catalog.css';
 
 const styles = theme => ({
 	root: {
-		width: "33.3%",
-		[theme.breakpoints.down("lg")]: {
+
 			width: "50% !important",
 
-		},
+
 		[theme.breakpoints.down("xs")]: {
 			width: "100% !important",
 		},
 	},
 	image: {
 		position: "relative",
-		height: 400,
-
+        height: 400,
 		[theme.breakpoints.down("xs")]: {
 			width: "100% !important",
 		},

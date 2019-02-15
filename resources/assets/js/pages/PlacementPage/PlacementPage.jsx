@@ -4,6 +4,7 @@ import { GetData } from '../../functions/GetData';
 import Navbar from '../../components/Navbar/Navbar';
 import Placement from '../../components/Placement/Placement';
 import { withStyles } from '@material-ui/core/styles';
+import Foot from "../../components/Foot/Foot";
 
 class PlacementPage extends Component {
 
@@ -24,6 +25,7 @@ class PlacementPage extends Component {
 				<Navbar link="/" linkText="На головну" />
 				<div id="main-body">
 					<Placement />
+                    <Foot/>
 				</div>
 			</div>
 		);
