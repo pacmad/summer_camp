@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function GetData(type) {
-	let BaseUrl = 'http://localhost/';
+	let BaseUrl = 'http://litodriada.com.ua/index.php/';
 	return new Promise((resolve, reject) => {
 		axios.get(BaseUrl + type)
 		.then(res => {

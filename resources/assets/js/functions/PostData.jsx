@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function PostData(type, userData) {
-    let BaseUrl = 'http://localhost/';
+    let BaseUrl = 'http://litodriada.com.ua/index.php/';
     return new Promise((resolve, reject) => {
         axios.post(BaseUrl + type, userData)
             .then(res => {

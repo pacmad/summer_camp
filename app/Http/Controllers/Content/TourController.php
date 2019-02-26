@@ -35,13 +35,13 @@ class TourController extends Controller
                 'transferFirst' => isset($request['transferFirst']) && !empty($request['transferFirst']) ? $request['transferFirst'] : 'kiev',
                 'transferBack' => isset($request['transferBack']) && !empty($request['transferBack'])? $request['transferBack'] : 'kiev',
             ]);
+//            $bookingInfo = [];
             $bookingInfo = $this->sendTourOnEmail($id);
             return [
                 'id' => $id,
                 'status' => true,
-                'message' => 'Дякуємо за бронювання! Ми зв\'яжемося з вами найближчим часом',
+                'message' => 'Дякуємо за бронювання! Ми зв\'яжемося з вами протягом 24-х годин',
                 'bookingInfo' => $bookingInfo['bookingInfo'],
-                'mailInfo' => $bookingInfo['mailResult']
             ];
         } catch (\Exception $exception) {
             return [
@@ -109,7 +109,7 @@ class TourController extends Controller
             $mailer->addAddress($this->message['reciever']);
             $mailer->send();
             return [
-                'success' => 'Verification link was sent on ' . $this->message['reciever'] . ' email address'
+                'success' => 'Iahooo!!! All good'
             ];
         } catch (Exception $e) {
             return [

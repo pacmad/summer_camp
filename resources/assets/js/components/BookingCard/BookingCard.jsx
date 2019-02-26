@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { GetData } from '../../functions/GetData';
 import BookingInformationCard from './BookingInformationCard';
 import BookingForm from './BookingForm';
+import BookingResultPopup from "./BookingResultPopup";
 
 const styles = theme => ({
 	root: {
@@ -30,8 +31,11 @@ class BookingCard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			openForm: false
-		}
+			openForm: false,
+			openPopup: false,
+			popupMessage: {}
+		};
+		this.manageInformationPopup = this.manageInformationPopup.bind(this);
 		this.handleBackData = this.handleBackData.bind(this);
 	}
 
@@ -39,8 +43,22 @@ class BookingCard extends Component {
 		console.log(this.props.cardData);
 	}
 
-	handleBackData(event) {
-		this.setState({openForm: event});
+	manageInformationPopup(event)
+	{
+		this.setState({
+			openPopup: event,
+			popupMessage: {}
+		});
+	}
+
+	handleBackData(event, message) {
+		console.log('Message: ', message);
+		if (typeof(message) !== 'undefined' && typeof(message.message) !== 'undefined') {
+			this.setState({openForm: event, openPopup: true, popupMessage: message});
+		} else {
+			this.setState({openForm: event});
+		}
+
 	}
 
 	render() {
@@ -54,6 +72,7 @@ class BookingCard extends Component {
 			<div className={classes.root}>
 				<BookingInformationCard cardData={data} callback={this.handleBackData}/>
 				<BookingForm tourId={data.id} open={this.state.openForm} callback={this.handleBackData}/>
+				<BookingResultPopup open={this.state.openPopup} information={this.state.popupMessage} callback={this.manageInformationPopup}/>
 			</div>
 
 		);

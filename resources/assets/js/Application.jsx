@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { green, red, purple } from '@material-ui/core/colors';
 // import { MuiThemeProvider as V0MuiThemeProvider} from 'material-ui';
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 
 import './Application.css';
 
@@ -36,7 +36,7 @@ export default class Application extends Component {
 	render() {
 		return (
 			<MuiThemeProvider theme={theme}>
-				<BrowserRouter>
+				<HashRouter>
 					<div id="app-root">
 						<div id="page-root">
 							<Route exact path="/" component={IndexPage} />
@@ -46,7 +46,7 @@ export default class Application extends Component {
 							<Route exact path="/booking" component={BookingPage} />
 						</div>
 					</div>
-				</BrowserRouter>
+				</HashRouter>
 			</MuiThemeProvider>
 		);
 	}

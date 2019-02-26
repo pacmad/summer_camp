@@ -76,7 +76,7 @@ class BookingInformationCard extends Component {
 							{data.description}
 						</Typography>
 						<Typography gutterBottom variant="body2" component="h3">
-							Ціна: {data.cost} грн
+							Ціна: {data.cost} грн + трансфер
 						</Typography>
 					</CardContent>
 				</CardActionArea>

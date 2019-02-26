@@ -20,6 +20,7 @@ class BookingForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			result: {},
 			firstName: '',
 			lastName: '',
 			fatherName: '',
@@ -54,8 +55,8 @@ class BookingForm extends Component {
         this.setState({tourId: this.props.tourId});
     }
 
-	handleClose() {
-		this.props.callback(false);
+	handleClose(result) {
+		this.props.callback(false, result);
 	};
 
     handleChange(event) {
@@ -93,6 +94,7 @@ class BookingForm extends Component {
         for(let index in errors) {
             if (errors[index] === true) {
             	document.getElementById('dialog-scrollable').scrollTop = 0;
+
                 // window.scrollTop(0);
             	return;
 			}
@@ -105,13 +107,18 @@ class BookingForm extends Component {
         if (!this.state.needTransferBack) {
             this.setState({transferBack: null});
         }
-
+		var that = this;
 		// delete this.state.needTransferFirst;
         // delete this.state.needTransferBack;
         PostData('bookTour', this.state)
             .then((result) => {
+            	this.setState({result: result});
+				this.handleClose(result);
                 console.log(result);
-            });
+            })
+			.then(() => {
+
+			});
     };
 
 	render() {
@@ -271,8 +278,8 @@ class BookingForm extends Component {
                                     onChange={this.handleChange}
                                     color={"primary"}
                                 >
-                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
-                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
+                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва (450грн)" />
+                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська (200грн)" />
                                 </RadioGroup>
                             </FormControl>
 						</FormGroup>
@@ -300,8 +307,8 @@ class BookingForm extends Component {
                                     onChange={this.handleChange}
                                     color={"primary"}
                                 >
-                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва" />
-                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська" />
+                                    <FormControlLabel value="kiev" control={<Radio color={"primary"} />} label="Києва (450грн)" />
+                                    <FormControlLabel value="ivano-frankivsk" control={<Radio color={"primary"} />} label="Івано-Франківська (200 грн)" />
                                 </RadioGroup>
                             </FormControl>
                         </FormGroup>
