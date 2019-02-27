@@ -14,7 +14,32 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { PostData } from '../../functions/PostData';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
+import PropTypes from 'prop-types';
+import {withStyles} from "@material-ui/core";
 
+const styles = theme => ({
+    title: {
+        padding: "24px",
+    },
+    content: {
+        padding: "24px",
+    },
+    // card: {
+    //     maxWidth: 900,
+    //     margin: "0 auto",
+    //     marginBottom: 40,
+    //     [theme.breakpoints.down("sm")]: {
+    //         borderRadius: 0
+    //     },
+    // },
+    // media: {
+    //     objectFit: 'cover',
+    // },
+    // action: {
+    //     width: "100%",
+    // }
+});
 
 class BookingForm extends Component {
 	constructor(props) {
@@ -122,7 +147,8 @@ class BookingForm extends Component {
     };
 
 	render() {
-
+        const { fullScreen } = this.props;
+        const { classes } = this.props;
 		const needTransferFirst = this.state.needTransferFirst;
 		let showTransferFirst;
 		if (needTransferFirst) {
@@ -143,12 +169,13 @@ class BookingForm extends Component {
 		return (
 			<div>
 				<Dialog
+                    fullScreen={fullScreen}
 					open={this.props.open}
 					onClose={this.handleClose}
 					aria-labelledby="form-dialog-title"
 					>
-					<DialogTitle id="form-dialog-title">Анкета</DialogTitle>
-					<DialogContent id={'dialog-scrollable'}>
+					<DialogTitle className={classes.title} id="form-dialog-title">Анкета</DialogTitle>
+					<DialogContent className={classes.content} id={'dialog-scrollable'}>
 						<TextField
 							required={true}
 							error={this.state.errors.firstName}
@@ -328,4 +355,8 @@ class BookingForm extends Component {
 	}
 }
 
-export default BookingForm;
+BookingForm.propTypes = {
+    fullScreen: PropTypes.bool.isRequired,
+};
+
+export default withMobileDialog()(withStyles(styles)(BookingForm));
