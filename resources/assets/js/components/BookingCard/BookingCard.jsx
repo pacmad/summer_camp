@@ -70,6 +70,7 @@ class BookingCard extends Component {
 
 		return (
 			<div className={classes.root}>
+
 				<BookingInformationCard cardData={data} callback={this.handleBackData}/>
 				<BookingForm tourId={data.id} open={this.state.openForm} callback={this.handleBackData}/>
 				<BookingResultPopup open={this.state.openPopup} information={this.state.popupMessage} callback={this.manageInformationPopup}/>
