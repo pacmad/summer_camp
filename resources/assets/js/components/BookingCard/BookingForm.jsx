@@ -20,11 +20,19 @@ import {withStyles} from "@material-ui/core";
 
 const styles = theme => ({
     title: {
-        padding: "24px",
+        padding: '24px 24px 20px',
+        boxShadow: '1px 0 20px rgba(0, 0, 0, 0.3)',
     },
     content: {
-        padding: "24px",
+        padding: '24px 24px 20px'
     },
+	actions: {
+        padding: '12px',
+        justifyContent: 'space-around',
+		margin: '0',
+        boxShadow: '1px -5px 20px -5px rgba(0, 0, 0, 0.3)',
+        // padding: '24px 24px 20px'
+	}
     // card: {
     //     maxWidth: 900,
     //     margin: "0 auto",
@@ -341,7 +349,7 @@ class BookingForm extends Component {
                         </FormGroup>
 
 					</DialogContent>
-					<DialogActions>
+					<DialogActions className={classes.actions}>
 						<Button onClick={this.handleClose} color="secondary">
 							Закрити
 						</Button>
