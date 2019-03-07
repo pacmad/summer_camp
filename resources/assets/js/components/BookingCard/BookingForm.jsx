@@ -29,8 +29,8 @@ const styles = theme => ({
 	actions: {
         padding: '12px',
         justifyContent: 'space-around',
-		margin: '0',
         boxShadow: '1px -5px 20px -5px rgba(0, 0, 0, 0.3)',
+        margin: '0 -24px -24px -24px'
         // padding: '24px 24px 20px'
 	}
     // card: {
@@ -347,16 +347,15 @@ class BookingForm extends Component {
                                 </RadioGroup>
                             </FormControl>
                         </FormGroup>
-
+                        <DialogActions className={classes.actions}>
+                            <Button onClick={this.handleClose} color="secondary">
+                                Закрити
+                            </Button>
+                            <Button onClick={this.handleSubmit} color="primary">
+                                Забронювати
+                            </Button>
+                        </DialogActions>
 					</DialogContent>
-					<DialogActions className={classes.actions}>
-						<Button onClick={this.handleClose} color="secondary">
-							Закрити
-						</Button>
-						<Button onClick={this.handleSubmit} color="primary">
-							Забронювати
-						</Button>
-					</DialogActions>
 				</Dialog>
 			</div>
 		);
