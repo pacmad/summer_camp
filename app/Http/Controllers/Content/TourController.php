@@ -84,6 +84,7 @@ class TourController extends Controller
             . 'По батькові: ' . $bookingInfo['fatherName'] . '<br />'
             . 'Дата народження: ' . $bookingInfo['birthDate'] . '<br />'
             . 'Стать: ' . $gender . '<br />'
+            . 'Домашня адреса: ' . $bookingInfo['address'] ? $bookingInfo['address'] : 'Не вказано' . '<br />'
             . 'Розмір футболки: ' . $bookingInfo['size'] . '<br />'
             . 'Контакти батьків: ' . $bookingInfo['parentsInfo'] . '<br />'
             . 'Назва заїзду: ' . $bookingInfo['title'] . '<br />'

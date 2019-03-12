@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { GetData } from '../../functions/GetData';
 import Catalog from '../../components/Catalog/Catalog';
 import IndexInfo from '../../components/IndexInfo/IndexInfo';
+import Carousel from '../../components/IndexInfo/Carousel';
 import Navbar from '../../components/Navbar/Navbar';
 import './IndexPage.css';
 import Foot from "../../components/Foot/Foot";
@@ -46,6 +47,7 @@ class IndexPage extends Component {
 					<div className="index-info-wrapper">
 						<IndexInfo />
 					</div>
+					<div className="index-photo-wrapper"><Carousel/></div>
 					<div id="catalog">
 						{allCards}
 					</div>
